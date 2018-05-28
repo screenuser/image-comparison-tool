@@ -1,0 +1,111 @@
+<div class="blog-content">		
+<article id="post-1103" class="post-1103 post type-post status-publish format-standard has-post-thumbnail hentry category-ui-testing-tools">
+	<h1>Image and screenshot comparison tools for UI testing</h1>	<span class="post-date">June 20, 2017</span>
+
+    
+	
+	<div class="post-thumbnail">
+		<img width="1197" height="760" src="https://screenster.io/wp-content/uploads/2017/01/8Pq8CC2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://screenster.io/wp-content/uploads/2017/01/8Pq8CC2.jpg 1197w, https://screenster.io/wp-content/uploads/2017/01/8Pq8CC2-300x190.jpg 300w, https://screenster.io/wp-content/uploads/2017/01/8Pq8CC2-768x488.jpg 768w, https://screenster.io/wp-content/uploads/2017/01/8Pq8CC2-1024x650.jpg 1024w" sizes="(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 984px) 60vw, (max-width: 1362px) 62vw, 840px">	</div><!-- .post-thumbnail -->
+
+	
+	<div class="content">
+		<span class="entry-content"><p>There is a simple case for why end-to-end UI testing is impossible without automated image comparison. If you’re not using a screenshot comparison tool, your product is at risk of shipping with visual bugs which rarely go unnoticed by users. Obviously, no sane QA engineer is willing to accept this risk.</p>
+<p><span id="more-1103"></span></p>
+<p>So do you automate image comparison when testing UIs? And if yes, what automation tool do you use? Is it a simple module for WebDriver — or other code-based solution — or a dedicated <a href="https://screenster.io/visual-css-regression-testing/" target="_blank">visual CSS regression testing tool</a>?</p>
+<p>Let’s look at the popular tools and platforms that QAs use to compare screenshots when testing web UIs.</p>
+<p>In this post, we’ll find out if the functionality of these image comparison tools meets the real-life requirements of UI testing.</p>
+<h2><a href="https://github.com/webdriverio/webdrivercss" target="_blank" rel="nofollow">WebdriverCSS</a></h2>
+<p>WebdriverCSS is a part of WebdriverIO, which makes for a lot of neat functionality. It allows you to write scripts in JavaScript, and it’s compatible with major TDD and BDD frameworks.</p>
+<p>One more reason to like this tool is the <a href="https://github.com/webdriverio/webdrivercss-adminpanel" target="_blank" rel="nofollow">WebdriverCSS Adminpanel</a> — a clean, nothing-extra-style dashboard with a slider for manual image comparison. Sure, setting up the admin panel adds overhead, but the overall experience of using the dashboard feels rewarding.</p>
+<h2><a href="https://github.com/Huddle/PhantomCSS" target="_blank" rel="nofollow">PhantomCSS</a></h2>
+<p>While WebdriverCSS mainly targets real browsers, there is another major option for automation screenshot comparison in headless browsers. PhantomCSS is a screenshot comparison module that works in tandem with Resemble.js and offers a visual/CSS regression testing library for PhantomJS and SlimerJS.</p>
+<p>The drawback of PhantomCSS is it’s overhead-to-value ratio. Since the tool is not for a real browser that people use, you don’t actually test the UI that people see. On the other hand, the overhead of setting it up is comparable to that of a real browser. Due to this, there is little incentive to choose PhantomCSS over WebDriverCSS.</p>
+<h2><a href="https://github.com/Huddle/Resemble.js" target="_blank" rel="nofollow">Resemble.js</a></h2>
+<p>Resemble.js was designed as an image comparison module that PhantomCSS uses to compare screenshots taken by CasperJS. Aside from this, Resemble.js can function as part of any image analysis setup. In fact, it serves as a core of other screenshot comparison tools on this list. The module offers basic image comparison functionality and a clean syntax:</p>
+<p><script src="https://gist.github.com/screenster/89c9be0da0f444413f4759079580492f.js"></script><link rel="stylesheet" href="https://assets-cdn.github.com/assets/gist-embed-8c6ade0d3779da026346afb9bf324f67.css"></p><div id="gist89730067" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-resemble-js" class="file">
+    
+
+  <div itemprop="text" class="blob-wrapper data type-javascript">
+      <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-resemble-js-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-resemble-js-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">//</span>compare two images</span></td>
+      </tr>
+      <tr>
+        <td id="file-resemble-js-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-resemble-js-LC2" class="blob-code blob-code-inner js-file-line"><span class="pl-k">var</span> diff <span class="pl-k">=</span> <span class="pl-en">resemble</span>(newImage).<span class="pl-en">compareTo</span>(originalImage).<span class="pl-en">onComplete</span>(<span class="pl-k">function</span>(<span class="pl-smi">comparisonData</span>){</td>
+      </tr>
+      <tr>
+        <td id="file-resemble-js-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-resemble-js-LC3" class="blob-code blob-code-inner js-file-line">	 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(comparisonData);</td>
+      </tr>
+      <tr>
+        <td id="file-resemble-js-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-resemble-js-LC4" class="blob-code blob-code-inner js-file-line">});</td>
+      </tr>
+      <tr>
+        <td id="file-resemble-js-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-resemble-js-LC5" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-resemble-js-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-resemble-js-LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">//</span> additional settings:</span></td>
+      </tr>
+      <tr>
+        <td id="file-resemble-js-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-resemble-js-LC7" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">//</span> diff.scaleToSameSize() — match the size of the new image to the baseline image;</span></td>
+      </tr>
+      <tr>
+        <td id="file-resemble-js-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-resemble-js-LC8" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">//</span> diff.ignoreAntialiasing() — ignore anti-aliasing (to minimize false positives);</span></td>
+      </tr>
+      <tr>
+        <td id="file-resemble-js-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-resemble-js-LC9" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">//</span> diff.ignoreColors() — ignore colors;</span></td>
+      </tr>
+      <tr>
+        <td id="file-resemble-js-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-resemble-js-LC10" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/screenster/89c9be0da0f444413f4759079580492f/raw/6bc60c9cf43e83d28ef8c9cd02b3720ba1b74dda/resemble.js" style="float:right">view raw</a>
+        <a href="https://gist.github.com/screenster/89c9be0da0f444413f4759079580492f#file-resemble-js">resemble.js</a>
+        hosted with <img draggable="false" class="emoji" alt="❤" src="https://s.w.org/images/core/emoji/2.4/svg/2764.svg"> by <a href="https://github.com">GitHub</a>
+      </div>
+    </div>
+</div>
+<p></p>
+<p>Both PhantomCSS and Resemble.js are brainchildren of Huddle, and both of them have a solid developer support and top-notch documentation.</p>
+<p>There’s one issue with Resemble, though. The tool uses a somewhat simplistic pixel matching algorithm that allows for tolerance of the number of different pixels. This is not practical for comparing screenshots of web pages where content will often shift by just a few pixels resulting in image comparison fails.</p>
+<h2><a href="https://github.com/BBC-News/wraith" target="_blank" rel="nofollow">Wraith</a></h2>
+<p>Wraith is another solution that’s primarily targeted at headless browsers. This tool is authored by the development team of BBC News, and it enables screenshot comparison in two distinct modes:</p>
+<ul>
+<li><b>Capture mode</b> — screenshot comparison across two domains (e.g. test version versus live website).</li>
+<li><b>History mode</b> — comparing screenshots across different versions of the UI on the same domain during <a href="https://screenster.io/regression-testing/" target="_blank">regression testing</a>.</li>
+</ul>
+<p>To help Wraith move beyond headless browsers, <a href="https://www.openhub.net/p/wraith-selenium" target="_blank" rel="nofollow">Wraith-Selenium</a> emerged as an independent third-party project in 2014. Unfortunately, the <a href="https://github.com/andrewccadman/wraith-selenium" target="_blank" rel="nofollow">GitHub repository of this project is inactive</a> as of 2017.</p>
+<h2><a href="https://github.com/yahoo/blink-diff" target="_blank" rel="nofollow">Blink-Diff</a></h2>
+<p>The development team at Yahoo positions Blink-diff as a lightweight screenshot comparison tool. The solution enables testers to automate image comparison via the command line or by adding a BlinkDiff object to the project code.</p>
+<p>Some of the notable features include cropping and block-out (i.e. ignoring particular UI regions). Besides, the tool breaks down image comparison automation into three distinct comparison modes:</p>
+<ul>
+<li>The <b>Pixel-by-pixel</b> mode detects all differences between the images.</li>
+<li>The <b>Perceptual</b> mode sorts out the differences that are less likely to be seen by humans.</li>
+<li>The <b>Context</b> mode detects missing and/or distorted parts of the image while accepting smaller differences.</li>
+</ul> 
+
+read more <a href="https://screenster.io/image-comparison-tool/">here</a>
